@@ -1,31 +1,32 @@
-Our developer was part way through developing the following feature but left the company and you are tasked with picking up where they left off.
+# Josh Kingswell
 
-The aim is to complete the piece of work by refactoring and improving the current code to get it to a working state that passes all A/C. Use material UI components and a form library where desirable.
+## Time spent
 
-There are Future requirements if you have time.
+Between 3 and 4 hours
 
-**_A/C_**
+## Get Started
 
-<!-- - Display total number of movies. -->
-  <!-- * Table must show movie title, average review score to 1 decimal place and company that produces the film.
-      * Movie company data comes from movieCompanies GET request.
-      * Movies data comes from movies GET request. -->
+Install deps and then either:
 
-      <!-- * (Future requirement - review column is sortable) -->
+- Run `npm run start` and navigate to http://localhost:5173
 
-<!-- - User must be able to select table row to leave a review with form appearing when there is a selected movie. -->
-  <!-- - POST request to submitReview endpoint, display message returned on response and display instead of form. -->
-  <!-- - Form must restrict message to 100 characters and show an error message if over 100 and not allow for submission in this instance. -->
+OR
 
-- (Future requirement - On mobile, this must appear as information in a modal, anything larger than mobile, this must appear below the table)
-  <!-- - Highlight selected movie row when clicked. -->
-  <!-- - Handle error and loading states. - Kind of? -->
-  <!-- - (Future requirement - Button to refresh movies and movie companies) -->
-- (Future requirement - containerise application using docker)
+- Run `docker build -t optix .`
+- Then run `docker run -p 5173:80 optix` and navigate to http://localhost:5173
 
-The three endpoints to be used are:
+## Notes
 
-- GET movie companies: https://comforting-starlight-f3456a.netlify.app/.netlify/functions/movieCompanies
-- GET movies: https://comforting-starlight-f3456a.netlify.app/.netlify/functions/movies
-- POST review: https://comforting-starlight-f3456a.netlify.app/.netlify/functions/submitReview
-  - body {review: message}
+All tasks completed besides `On mobile, this must appear as information...`. I misread this task at first, but I believe the use
+of toast notifications makes it moot. The toasts will display errors the same for all users.
+
+### More time?
+
+Had I spent more time on this, I would have liked to have implemented the following:
+
+- Modal form with a JS breakpoint utilising the mui react hook or react MediaQuery, so only users with tablets or bigger recieved the form in a modal.
+- A toggle to switch the table into a card/tile view.
+  - Utilising some form of breakpoint to display the card/tile view to mobile users as default as scrollable tables are not ideal.
+- Setup either redux or use a react context provider + reducer to handle the data and data calls better.
+- Removed material ui and created components myself for better styling and control!
+- Created a docker compose file for ease of use.
