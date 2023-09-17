@@ -1,4 +1,4 @@
-import { useRef, useState, Children, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MovieTable from "./components/MovieTable";
 import { Box, CircularProgress, Container } from "@mui/material";
 import ErrorBoundary from "./components/ErrorBoundary";

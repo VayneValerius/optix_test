@@ -20,7 +20,7 @@ const MovieTable: FC<IMovieTableProps> = ({
   selectedMovie,
   setSelectedMovie,
 }) => {
-  const [order, setOrder] = useState("desc");
+  const [order, setOrder] = useState<"asc" | "desc">("desc");
   const [isSortedByReview, setIsSortedByReview] = useState(false);
 
   const compareAverageReviews = (review1: string, review2: string) => {
@@ -77,7 +77,8 @@ const MovieTable: FC<IMovieTableProps> = ({
               key={movie.id}
               sx={{}}
               selected={movie.id === selectedMovie}
-              onClick={() => setSelectedMovie(movie.id)}
+              // Set the type as number | string, forcing type
+              onClick={() => setSelectedMovie(movie.id as number)}
             >
               <TableCell component="th" scope="row">
                 {movie.title}

@@ -3,18 +3,19 @@ import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { Box, Button, FormLabel } from "@mui/material";
 import MovieReviewValidator from "../validators/MovieReviewValidator";
 import { toast } from "react-toastify";
+import { FC } from "react";
 
 interface IMovieFormProps {
   movieID: string | number;
 }
 
-const MovieForm = ({ movieID }) => {
-  const formSaver = (values) => {
+const MovieForm: FC<IMovieFormProps> = ({ movieID }) => {
+  const formSaver = (values: { review: string | undefined }) => {
     fetch(
       `https://comforting-starlight-f3456a.netlify.app/.netlify/functions/submitReview/${movieID}`,
       {
         method: "POST",
-        body: values,
+        body: JSON.stringify(values),
       }
     )
       .then((response) => response.json())
